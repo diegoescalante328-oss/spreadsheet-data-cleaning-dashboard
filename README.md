@@ -1,82 +1,82 @@
-# Spreadsheet Data Cleaning Dashboard (Portfolio Project)
+# Spreadsheet Data Cleaning Dashboard (Portfolio Case Study)
 
-## Project Overview
-This is a beginner-friendly portfolio project that simulates a common freelance analytics task: clean messy spreadsheet sales data and create a simple report with visuals.
-
-The dataset is fully **synthetic** (not real company data) and intentionally includes typical data-quality issues.
+A beginner-friendly analytics case study that shows how messy spreadsheet sales data can be cleaned into client-ready reporting outputs.
 
 ## Business Problem
-A small business exported sales records from spreadsheets, but the data is inconsistent and hard to report on. They need:
-- clean, analysis-ready data
-- quick revenue summaries
-- simple visuals for monthly and category performance
+A small business exports sales data from spreadsheets, but inconsistent formatting, duplicates, and missing values make reporting unreliable. This project demonstrates a repeatable cleanup workflow that improves trust in monthly and category-level KPIs.
+
+## Synthetic Data & Privacy Note
+This repository uses a **synthetic dataset** created for practice and portfolio use. No real customer, financial, or company data is included.
 
 ## Tools Used
 - Python
 - pandas
 - matplotlib
+- Markdown documentation for project handoff
 
-## Project Structure
+## Workflow
+1. Load raw CSV export.
+2. Standardize column names and text fields.
+3. Convert dates and numeric columns.
+4. Remove duplicates and handle missing discounts.
+5. Create a calculated revenue field.
+6. Export cleaned dataset, quality summary, client-facing report, and visuals.
 
+## Cleaning Issues Addressed
+- Mixed date formats
+- Inconsistent capitalization and extra spaces
+- Duplicate rows
+- Missing discount values
+- Numeric fields stored as text/inconsistent format
+
+## Expected Outputs
+After running `python src/clean_sales_data.py`, the project generates:
+- `data/cleaned_sales_data.csv`
+- `reports/data_quality_summary.md`
+- `reports/summary_report.md`
+- `visuals/monthly_revenue.png`
+- `visuals/revenue_by_category.png`
+- `visuals/yearly_revenue.png`
+
+## Key Insights (Synthetic Sample)
+- Revenue trends can be compared month-to-month after date standardization.
+- Category performance becomes reliable once naming is standardized.
+- A calculated revenue field enables immediate KPI reporting without manual spreadsheet formulas.
+
+## How to Run
+```bash
+pip install -r requirements.txt
+python src/clean_sales_data.py
+```
+
+## Repository Structure
 ```text
 spreadsheet-data-cleaning-dashboard/
 ├── data/
 │   ├── raw_sales_data.csv
 │   └── cleaned_sales_data.csv
+├── docs/
+│   └── data_dictionary.md
 ├── reports/
+│   ├── data_quality_summary.md
 │   └── summary_report.md
 ├── src/
 │   └── clean_sales_data.py
 ├── visuals/
-│   ├── monthly_revenue.png
-│   ├── revenue_by_category.png
-│   └── yearly_revenue.png
-├── .gitignore
+│   └── .gitkeep
 ├── README.md
 └── requirements.txt
 ```
 
-## Data Cleaning Process
-The script in `src/clean_sales_data.py` performs:
-1. Column name standardization
-2. Whitespace trimming
-3. Text capitalization standardization
-4. Duplicate removal
-5. Missing discount handling (fills with `0`)
-6. Date parsing and standard formatting
-7. Numeric conversion for quantity, unit price, and discount
-8. Revenue calculation:
-   `revenue = quantity * unit_price * (1 - discount)`
+## Limitations
+- Small synthetic dataset (not suitable for real forecasting).
+- No customer segmentation, returns data, or product-level margin analysis.
+- Visuals are static PNG charts, not interactive dashboards.
 
-## Dashboard / Visual Outputs
-After running the script, these charts are created:
-- `monthly_revenue.png`: monthly revenue trend
-- `revenue_by_category.png`: revenue by product category
-- `yearly_revenue.png`: yearly revenue summary
+## Future Improvements
+- Add a larger synthetic dataset with more months and regions.
+- Include returns/cancellations and net sales metrics.
+- Add simple validation checks before writing cleaned outputs.
 
-> Note: Visual PNG files are generated locally when you run `python src/clean_sales_data.py`.
-
-## Key Insights (Sample Data)
-- Home & Kitchen is the top revenue category in this sample.
-- Revenue rises from January to March in the sample period.
-- Electronics and Fashion are also meaningful revenue contributors.
-
-## How to Run
-1. (Optional) Create and activate a virtual environment.
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the script:
-   ```bash
-   python src/clean_sales_data.py
-   ```
-4. Check outputs:
-   - Cleaned data: `data/cleaned_sales_data.csv`
-   - Visuals (generated locally): `visuals/monthly_revenue.png`, `visuals/revenue_by_category.png`, `visuals/yearly_revenue.png`
-
-## What This Demonstrates for Freelance Clients
-- Ability to clean messy spreadsheet exports
-- Ability to build a reproducible Python workflow
-- Ability to turn raw data into simple decision-support visuals
-- Clear documentation for project handoff
+## License Note
+This project is intended for portfolio and educational use. Add a license file (for example MIT) if you plan to distribute or reuse it publicly.

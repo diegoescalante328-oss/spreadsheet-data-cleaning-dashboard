@@ -1,45 +1,44 @@
-# Sales Data Cleaning & Dashboard Summary Report
+# Client-Facing Summary Report
 
-## Project Objective
-This project demonstrates a clear, practical workflow for cleaning a small sales dataset and creating a simple visual summary for business reporting.
+## Executive Summary
+This project turns a messy synthetic spreadsheet export into clean, analysis-ready sales data and a basic dashboard package that a small business owner can review quickly.
 
-## Issues Found in Raw Data
-The synthetic raw data intentionally includes common spreadsheet issues:
-- inconsistent capitalization
-- extra spaces in text and numeric fields
-- duplicate transactions
-- missing discount values
-- mixed date formats (for example `2026/01/03`, `01-04-2026`, `07 Jan 2026`)
-- numeric fields stored inconsistently
+## Business Question
+How can we standardize raw sales data so monthly revenue trends, category performance, and regional performance can be reported accurately?
 
-## Cleaning Steps Performed
-1. Standardized column names to lowercase with underscores.
-2. Trimmed extra whitespace.
-3. Standardized capitalization using title case.
-4. Converted `quantity`, `unit_price`, and `discount` to numeric types.
-5. Filled missing discount values with `0`.
-6. Parsed and standardized `order_date`.
-7. Removed duplicate records.
-8. Removed rows with invalid required date/numeric values.
-9. Calculated `revenue` using:
-   `revenue = quantity * unit_price * (1 - discount)`
+## Dataset Description and Caveats
+- Source file: `data/raw_sales_data.csv`
+- Time period covered: **2026-01-03 to 2026-03-04**
+- Final cleaned records used: **14**
+- Caveat: The dataset is synthetic and small, so insights are for demonstration only and not for real-world forecasting.
 
-## Key Business Insights (Sample Data)
-- Home & Kitchen generated the highest category-level revenue in this sample.
-- Revenue increases from January to March in the sample period.
-- 2026 revenue is supported mainly by Home & Kitchen and Electronics.
+## Data Cleaning Performed
+- Standardized column names
+- Trimmed extra whitespace
+- Standardized text fields (`customer_name`, `product_category`, `product_name`, `payment_method`, `region`)
+- Converted date field to a consistent format
+- Converted numeric fields for accurate math
+- Removed duplicate rows
+- Filled missing discounts with `0`
+- Created calculated `revenue` field
 
-## Dashboard / Visual Summary
-Expected generated visuals:
-- `visuals/monthly_revenue.png` (monthly trend)
-- `visuals/revenue_by_category.png` (category comparison)
-- `visuals/yearly_revenue.png` (yearly total)
+## KPI Snapshot
+- Total revenue: **$887.70**
+- Number of cleaned orders: **14**
+- Average revenue per order: **$63.41**
+- Top category by revenue: **Electronics** ($293.74)
+- Top region by revenue: **North** ($254.27)
 
-Note: these PNG files are generated locally by running `python src/clean_sales_data.py`.
+## Key Findings
+- Monthly revenue fluctuated across the sample period, from **$332.08** in 2026-01 to **$309.68** in 2026-03.
+- **Electronics** contributed the highest category revenue in this sample.
+- Revenue is concentrated in a few categories, indicating where promotions or inventory planning can start.
 
-## What This Demonstrates to a Client
-This project shows capability to:
-- clean messy spreadsheet exports,
-- apply reliable data-quality steps,
-- create clear business visuals,
-- and deliver organized, reproducible project files.
+## Business Recommendations
+- Keep a standardized input template for spreadsheet uploads to reduce cleanup time.
+- Prioritize top-performing categories for stock planning and featured promotions.
+- Review lower-revenue categories to confirm whether pricing, assortment, or marketing changes are needed.
+
+## Limitations and Next Steps
+- Because this is synthetic sample data, results should not be treated as real market performance.
+- Next steps: add a larger sample dataset, include return/cancellation fields, and track customer segments for deeper analysis.
